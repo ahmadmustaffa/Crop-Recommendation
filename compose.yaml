@@ -1,0 +1,31 @@
+services:
+
+  crop-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: crop-api
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
+
+  streamlit:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    container_name: crop-streamlit
+
+    ports:
+      - "8501:8501"
+
+    environment:
+      API_URL: http://crop-api:8000/predict
+
+    depends_on:
+      - crop-api
+
+    restart: unless-stopped

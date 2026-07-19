@@ -1,0 +1,3 @@
+"""
+Crop Recommendation application package.
+"""
