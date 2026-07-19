@@ -1,0 +1,31 @@
+FROM python:3.11-slim
+
+# Prevent Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Enable unbuffered logging
+ENV PYTHONUNBUFFERED=1
+
+# Create a non-root user with UID 1000 (required by Hugging Face)
+RUN useradd --create-home --uid 1000 appuser
+
+ENV HOME=/home/appuser
+WORKDIR $HOME/app
+
+# Copy requirements first for better Docker layer caching
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application files with correct ownership
+COPY --chown=appuser:appuser app ./app
+COPY --chown=appuser:appuser artifacts ./artifacts
+
+# Switch to non-root user
+USER appuser
+
+# Hugging Face Docker Spaces expect port 7860
+EXPOSE 7860
+
+CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "7860"]

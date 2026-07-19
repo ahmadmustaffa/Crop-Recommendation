@@ -1,3 +1,15 @@
+---
+title: Crop Recommendation API
+emoji: 🌱
+colorFrom: green
+colorTo: blue
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
+
 # 🌱 Crop Recommendation System
 
 A production-inspired machine learning application that recommends the most suitable crop based on soil nutrients and environmental conditions.
