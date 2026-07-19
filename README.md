@@ -14,6 +14,11 @@ Deployment will be added soon.
 - API Documentation: https://crop-recommendation-api-fzgg.onrender.com/docs
 
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Docker](https://img.shields.io/badge/Docker-containerized-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
+
 ## 📖 Project Overview
 
 Selecting the right crop is an important decision for maximizing agricultural productivity. This project uses a supervised machine learning model to recommend the most suitable crop based on soil and environmental characteristics.
