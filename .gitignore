@@ -17,3 +17,5 @@ venv/
 .DS_Store
 
 Thumbs.db
+
+notebooks/Copy_of_model_selection.ipynb
