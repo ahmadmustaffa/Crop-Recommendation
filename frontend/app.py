@@ -130,7 +130,7 @@ with right_col:
     )
 
 
-def get_prediction(payload: dict[str, Any]) -> str:
+def get_prediction(payload: dict[str, Any]) -> dict[str, Any]:
     """
     Send prediction request to the FastAPI backend.
 
@@ -152,7 +152,7 @@ def get_prediction(payload: dict[str, Any]) -> str:
 
     response.raise_for_status()
 
-    return response.json()["recommended_crop"]
+    return response.json()
 
 
 if st.button("Recommend Crop"):
@@ -168,11 +168,14 @@ if st.button("Recommend Crop"):
     }
 
     try:
-        crop = get_prediction(payload)
+        prediction = get_prediction(payload)
 
-        st.success(
-            f"Recommended Crop: **{crop}**"
-        )
+        crop = prediction["recommended_crop"]
+        confidence = prediction["confidence"]
+
+        # Display result with confidence percentage
+        st.success(f"Recommended Crop: **{crop}**")
+        st.info(f"Confidence Score: **{confidence * 100:.1f}%**")
 
     except requests.RequestException as error:
 
