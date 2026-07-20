@@ -87,9 +87,7 @@ def predict(
 
     logger.info("Prediction completed successfully.")
 
-    return CropRecommendationResponse(
-        recommended_crop=prediction
-    )
+    return CropRecommendationResponse(**prediction)
 
 
 @app.exception_handler(Exception)

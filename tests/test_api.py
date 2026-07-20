@@ -62,7 +62,14 @@ def test_prediction_response_contains_crop() -> None:
 
     response_json = response.json()
 
+    # Verify both fields exist in JSON response
     assert "recommended_crop" in response_json
+    assert "confidence" in response_json
+
+    # Verify value types and bounds
+    assert isinstance(response_json["recommended_crop"], str)
+    assert isinstance(response_json["confidence"], float)
+    assert 0.0 <= response_json["confidence"] <= 1.0
 
 
 def test_invalid_request_returns_422() -> None:

@@ -27,4 +27,13 @@ class CropRecommendationResponse(BaseModel):
     Response returned after prediction.
     """
 
-    recommended_crop: str
+    recommended_crop: str = Field(
+        ...,
+        description="Name of the predicted crop.",
+    )
+    confidence: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Prediction confidence score between 0.0 and 1.0.",
+    )

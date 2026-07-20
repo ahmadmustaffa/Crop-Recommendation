@@ -5,7 +5,7 @@ This module loads the trained model and exposes helper functions
 for making predictions.
 """
 
-from typing import Dict
+from typing import Dict, Any
 from app.logger import logger
 
 import joblib
@@ -46,7 +46,7 @@ except Exception as error:
         "Unable to initialize the inference engine."
     ) from error
 
-def predict_crop(features: Dict[str, float]) -> str:
+def predict_crop(features: Dict[str, float]) -> Dict[str, Any]:
     """
     Predict the most suitable crop.
 
@@ -70,6 +70,8 @@ def predict_crop(features: Dict[str, float]) -> str:
     try:
         prediction = model.predict(input_df)[0]
 
+        probabilities = model.predict_proba(input_df)[0]
+
     except Exception as error:
         logger.exception("Prediction failed.")
 
@@ -77,11 +79,21 @@ def predict_crop(features: Dict[str, float]) -> str:
             "Failed to generate crop recommendation."
         ) from error
 
-    crop = np.array([prediction])
+    crop = np.array([prediction])[0]
+
+    confidence_score = np.max(probabilities)
 
     logger.info("Prediction generated successfully.")
 
-    return str(crop[0])
+    return {
+        "recommended_crop": str(crop),
+        "confidence": confidence_score,
+    }
 
 # actual_prediction_string = model.predict(input_df)[0]
 # prediction_crop = np.array([actual_prediction_string])
+#
+# probabilities = model.predict_proba(input_df)[0]
+# confidence_score = np.max(probabilities)
+
+# return str(np.array([prediction])[0])
