@@ -51,7 +51,7 @@ The application follows a modular architecture where:
 
 ### Docker Container
 
-! [Docker Container](screenshots/Docker_Container_Logs.PNG)
+![Docker Container](screenshots/Docker_Container_Logs.PNG)
 
 
 ## ✨ Features
