@@ -155,30 +155,56 @@ def get_prediction(payload: dict[str, Any]) -> dict[str, Any]:
     return response.json()
 
 
-if st.button("Recommend Crop"):
+if st.button("Recommend Crop", use_container_width=True):
 
-    payload = {
-        "N": n,
-        "P": p,
-        "K": k,
-        "temperature": temperature,
-        "humidity": humidity,
-        "ph": ph,
-        "rainfall": rainfall,
-    }
+    with st.spinner("Analyzing soil and climate conditions... 🌱"):
 
-    try:
-        prediction = get_prediction(payload)
+        payload = {
+            "N": n,
+            "P": p,
+            "K": k,
+            "temperature": temperature,
+            "humidity": humidity,
+            "ph": ph,
+            "rainfall": rainfall,
+        }
 
-        crop = prediction["recommended_crop"]
-        confidence = prediction["confidence"]
+        try:
+            prediction = get_prediction(payload)
 
-        # Display result with confidence percentage
-        st.success(f"Recommended Crop: **{crop}**")
-        st.info(f"Confidence Score: **{confidence * 100:.1f}%**")
+            crop = prediction["recommended_crop"]
+            confidence = prediction["confidence"] * 100
 
-    except requests.RequestException as error:
+            # Display result with confidence percentage
 
-        st.error(
-            f"Unable to connect to API.\n\n{error}"
-        )
+            st.markdown(
+                f"""
+            <div style="
+            background-color:#E8F5E9;
+            padding:25px;
+            border-radius:12px;
+            border-left:8px solid #2E7D32;
+            ">
+
+            <h3 style="color:#1B5E20;">
+            🌱 Recommended Crop
+            </h3>
+
+            <h2 style="color:#2E7D32;">
+            {crop.title()}
+            </h2>
+
+            <h4 style="color:#2E7D32;">
+            🎯 Confidence: {confidence:.1f}%
+            </h4>
+
+            </div>
+            """,
+                unsafe_allow_html=True,
+            )
+
+        except requests.RequestException as error:
+
+            st.error(
+                f"Unable to connect to API.\n\n{error}"
+            )
