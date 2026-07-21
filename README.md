@@ -35,23 +35,23 @@ The application follows a modular architecture where:
 
 ### Input Form Frontend 
 
-![Input Form Frontend](screenshots/Input Form.PNG)
+![Input Form Frontend](screenshots/Input_Form_Frontend.PNG)
 
 ### Crop Recommendation Result
 
-![Crop Recommendation Result](screenshots/Prediction.PNG)
+![Crop Recommendation Result](screenshots/Crop_Recommendation_Result.PNG)
 
 ### API Homepage
 
-![Home Page](screenshots/API Homepage.PNG)
+![Home Page](screenshots/API_Homepage.PNG)
 
 ### API documentation
 
-![API Documentation](screenshots/API docs.PNG)
+![API Documentation](screenshots/API_docs.PNG)
 
 ### Docker Container
 
-! [Docker Container](screenshots/Docker Logs.PNG)
+! [Docker Container](screenshots/Docker_Container_Logs.PNG)
 
 
 ## ✨ Features
