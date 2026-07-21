@@ -9,6 +9,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 from app.logger import logger
+from typing import Any, Dict
 
 from app.inference import predict_crop
 from app.schemas import (
@@ -32,19 +33,23 @@ app = FastAPI(
     version=API_VERSION,
 )
 
-@app.get("/")
-def home() -> dict[str, str]:
+@app.get("/", summary="API Root Metadata")
+def home() -> Dict[str, Any]:
     """
-    Root endpoint.
-
-    Returns
-    -------
-    dict[str, str]
-        Welcome message.
+    Root endpoint returning API status and resource links.
     """
-
     return {
-        "message": "Crop Recommendation API is running successfully."
+        "status": "online",
+        "service": "Crop Recommendation API",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "endpoints": {
+            "predict": {
+                "url": "/predict",
+                "method": "POST",
+                "description": "Get crop recommendation based on soil and weather metrics.",
+            }
+        },
     }
 
 
