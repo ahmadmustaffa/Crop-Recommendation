@@ -34,23 +34,38 @@ app = FastAPI(
 )
 
 @app.get("/", summary="API Root Metadata")
-def home() -> Dict[str, Any]:
+def home():
     """
-    Root endpoint returning API status and resource links.
+    User-friendly HTML landing page for browser visitors.
     """
-    return {
-        "status": "online",
-        "service": "Crop Recommendation API",
-        "version": "1.0.0",
-        "docs": "/docs",
-        "endpoints": {
-            "predict": {
-                "url": "/predict",
-                "method": "POST",
-                "description": "Get crop recommendation based on soil and weather metrics.",
-            }
-        },
-    }
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Crop Recommendation API</title>
+        <style>
+            body { font-family: system-ui, -apple-system, sans-serif; max-width: 650px; margin: 40px auto; padding: 0 20px; color: #333; }
+            h1 { color: #2e7d32; }
+            .status { display: inline-block; padding: 4px 12px; background-color: #e8f5e9; color: #2e7d32; border-radius: 12px; font-weight: bold; }
+            .card { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #eee; }
+            a { color: #1b5e20; text-decoration: none; font-weight: 600; }
+            a:hover { text-decoration: underline; }
+        </style>
+    </head>
+    <body>
+        <h1>🌾 Crop Recommendation API</h1>
+        <p>Status: <span class="status">Online</span> &nbsp; | &nbsp; Version: <strong>1.0.0</strong></p>
+
+        <div class="card">
+            <h3>API Documentation Links</h3>
+            <ul>
+                <li><a href="/docs" target="_blank">Swagger UI (/docs)</a></li>
+                <li><a href="/redoc" target="_blank">ReDoc Documentation (/redoc)</a></li>
+            </ul>
+        </div>
+    </body>
+    </html>
+    """
 
 
 @app.post(
