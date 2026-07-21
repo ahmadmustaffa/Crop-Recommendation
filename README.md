@@ -1,3 +1,5 @@
+[![Python Tests](https://github.com/ahmadmustaffa/Crop-Recommendation/actions/workflows/python-tests.yml/badge.svg)](https://github.com/ahmadmustaffa/Crop-Recommendation/actions/workflows/python-tests.yml)
+
 # 🌱 Crop Recommendation System
 
 A production-inspired machine learning application that recommends the most suitable crop based on soil nutrients and environmental conditions.
