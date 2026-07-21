@@ -7,7 +7,6 @@ The project combines machine learning, FastAPI, Streamlit, Docker, and Docker Co
 
 ## 🚀 Live Demo
 
-Deployment will be added soon.
 
 - Frontend: https://crop-recommendation-ahmad.streamlit.app/
 - API: https://crop-recommendation-api-fzgg.onrender.com
