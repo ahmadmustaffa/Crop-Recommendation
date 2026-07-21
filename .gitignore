@@ -19,3 +19,5 @@ venv/
 Thumbs.db
 
 notebooks/Copy_of_model_selection.ipynb
+
+# env variable is crop_rec

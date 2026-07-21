@@ -136,7 +136,3 @@ Crop Recommendation/
 └── README.md
 ```
 
-
-
-### for developer only
-#### env variable is crop_rec
