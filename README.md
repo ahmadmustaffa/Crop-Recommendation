@@ -31,6 +31,29 @@ The application follows a modular architecture where:
 - Docker and Docker Compose simplify deployment.
 
 
+## Application Screenshots
+
+### Input Form Frontend 
+
+![Input Form Frontend](screenshots/Input Form.PNG)
+
+### Crop Recommendation Result
+
+![Crop Recommendation Result](screenshots/Prediction.PNG)
+
+### API Homepage
+
+![Home Page](screenshots/API Homepage.PNG)
+
+### API documentation
+
+![API Documentation](screenshots/API docs.PNG)
+
+### Docker Container
+
+! [Docker Container](screenshots/Docker Logs.PNG)
+
+
 ## ✨ Features
 
 - Crop recommendation using Machine Learning
@@ -116,5 +139,5 @@ Crop Recommendation/
 
 
 
-
-### env variable is crop_rec
+### for developer only
+#### env variable is crop_rec
